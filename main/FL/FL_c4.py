@@ -16,9 +16,9 @@ import os
 # os.environ['WORKING_DIR_IMPORT_MODE'] = 'eval_coco'  # Change this to your target mode
 # >>>>>>> main
 
-os.environ['WORKING_DIR_IMPORT_MODE'] = 'eval_thoracic'  # Change this to your target mode
+# os.environ['WORKING_DIR_IMPORT_MODE'] = 'eval_thoracic'  # Change this to your target mode
 # os.environ['WORKING_DIR_IMPORT_MODE'] = 'eval_cholec'  # Change this to your target mode
-# os.environ['WORKING_DIR_IMPORT_MODE'] = 'train_thoracic'  # Change this to your target mode
+os.environ['WORKING_DIR_IMPORT_MODE'] = 'train_thoracic'  # Change this to your target mode
 # os.environ['WORKING_DIR_IMPORT_MODE'] = 'train_mix3'  # Change this to your target mode
 
 # os.environ['WORKING_DIR_IMPORT_MODE'] = 'train_coco'  # Change this to your target mode
@@ -173,7 +173,7 @@ iteration_num = 0
 #################
 #############training
 saver_id =0
-displayer = Display(GPU_mode)
+displayer = Display(GPU_mode,Model_infer)
 epoch =0
 features =None
 visdom_id=0

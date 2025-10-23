@@ -18,8 +18,8 @@ import pathlib
 import cv2
 from torch.optim import lr_scheduler
 
-from model.model_3dcnn_linear_TC import _VideoCNN
-from model.model_3dcnn_linear_ST import _VideoCNN_S
+# from model.model_3dcnn_linear_TC import _VideoCNN
+# from model.model_3dcnn_linear_ST import _VideoCNN_S
 from working_dir_root import learningR,learningR_res,SAM_pretrain_root,Load_feature,Weight_decay,Evaluation,Display_student,Display_final_SAM
 # from working_dir_root import Enable_teacher
 from dataset.dataset import class_weights

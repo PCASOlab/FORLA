@@ -177,7 +177,7 @@ iteration_num = 0
 #################
 #############training
 saver_id =0
-displayer = Display(GPU_mode)
+displayer = Display(GPU_mode,Model_infer)
 epoch =0
 features =None
 visdom_id=0

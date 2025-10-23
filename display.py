@@ -15,7 +15,7 @@ import numpy as np
 import torch.nn as nn
 import torch.utils.data
 from torch.autograd import Variable
-from model import  model_experiement, model_infer_TC
+from model import  model_experiement, model_infer_slot_att
 from working_dir_root import Output_root,Save_flag,Display_visdom_figure,Load_flow,Test_on_cholec_seg8k,Display_images, Evaluation
 from dataset.dataset import myDataloader,categories,category_colors, Endovis_data, MICCAI_data
 from working_dir_root import Evaluation_slots
@@ -37,10 +37,13 @@ def save_img_to_folder(this_save_dir,ID,img):
         os.makedirs(this_save_dir)
     cv2.imwrite(this_save_dir +
                 str(ID) + ".jpg", img)
+import argparse
 
 class Display(object):
-    def __init__(self,GPU=False):
-        self.Model_infer = model_infer_TC._Model_infer(GPU)
+    def __init__(self,GPU=False,Model_inference =None):
+        # self.Model_infer = model_infer_slot_att._Model_infer(args_s=None,GPU)
+        self.Model_infer =  Model_inference
+
         self.dataLoader = myDataloader()
         self.show_num=show_num
         self.results = {"score":[],
