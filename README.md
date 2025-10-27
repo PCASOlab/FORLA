@@ -32,3 +32,74 @@ Please refer to [install.md](docs/install.md) for step-by-step guidance on how t
 ### Dataset Preparation
 
 Please refer to [data.md](docs/data.md) for dataset downloading and pre-processing.
+
+
+
+### Training FL models
+
+---
+Option 1
+
+using [FL_launcher.sh](./FL_launcher.sh) to run server and clients all in once.
+Config FL_launcher.sh to add more clients:
+```
+#!/bin/bash
+
+# Federated Learning Tmux Setup Script
+
+# Create server session
+tmux new-session -d -s server -n "FL Server"
+tmux send-keys -t server "python -m main.FL.FL_server" C-m
+
+# Create client sessions
+tmux new-session -d -s client1 -n "FL Client1"
+tmux send-keys -t client1 "python -m main.FL.FL_c1" C-m
+
+tmux new-session -d -s client2 -n "FL Client2" 
+tmux send-keys -t client2 "python -m main.FL.FL_c2" C-m
+
+tmux new-session -d -s client3 -n "FL Client3"
+tmux send-keys -t client3 "python -m main.FL.FL_c3" C-m
+
+tmux new-session -d -s client4 -n "FL Client4"
+tmux send-keys -t client4 "python -m main.FL.FL_c4" C-m
+
+# Optional: Attach to server session by default
+tmux attach-session -t server
+```
+Change the parameter in [main.FL.FL_server](./main/FL/FL_server.py) for aggreggating corresponding number of client local model(e.g., 4):
+```
+FED_MIN_CLIENTS = 4
+```
+For each client code, for instace client1[main.FL.FL_c1](./main/FL/FL_c1.py),
+set the data target trained on:
+```
+import os
+ 
+# os.environ['WORKING_DIR_IMPORT_MODE'] = 'train_miccai'  # Change this to your target mode
+# os.environ['WORKING_DIR_IMPORT_MODE'] = 'eval_miccai'  # Change this to your target mode
+ 
+# os.environ['WORKING_DIR_IMPORT_MODE'] = 'eval_pascal'  # Change this to your target mode
+os.environ['WORKING_DIR_IMPORT_MODE'] = 'train_pascal'  # Change this to your target mode
+
+```
+
+
+```
+sh FL_launcher.sh
+```
+See output like:
+```
+Not enough clients (0) for aggregation
+Not enough clients (0) for aggregation
+Not enough clients (0) for aggregation
+Not enough clients (1) for aggregation
+Not enough clients (3) for aggregation
+Aggregated new global model v1
+Aggregated new global model v2
+Aggregated new global model v3
+Aggregated new global model v4
+.
+.
+```
+---

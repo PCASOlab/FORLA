@@ -38,7 +38,7 @@ from main.FL.FL_server import Output_root
 use_fedprox = False  # Set to False to use FedAvg
 
 
-Enable_student = False
+Enable_student = True
 
 if Evaluation_slots:
     Enable_student = False

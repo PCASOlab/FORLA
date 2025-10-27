@@ -57,7 +57,7 @@ from dataset import io
 import pathlib
 import argparse
 from main.FL.FL_client import Fed_iter,ClientFedHelper,use_fedprox,mu,COMPONENTS_avg,Output_root,Enable_student
-from main.FL.FL_server import Average_student
+from main.FL.FL_server import Average_teacher
 # Output_root = Output_root + "FL/Dino/"
 Gpu_selection ='1'
 
@@ -65,7 +65,7 @@ CLIENT_ID = 4
 DEFAULT_CONFIG = "videosaur_m/configs/videosaur/ytvis3_MLP_en.yml"
 DEFAULT_CONFIG_s = "videosaur_m/configs/videosaur/ytvis3_MLP_en_s.yml"
 
-Fed_student = Average_student
+Fed_student = Average_teacher
 
 
 

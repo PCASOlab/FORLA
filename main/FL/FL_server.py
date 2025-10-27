@@ -15,7 +15,7 @@ SHARED_ROOT = Output_root + "shared_models/"
 FED_MIN_CLIENTS = 4
 FED_CLIENT_TIMEOUT = 300  # 5 minutes
 COMPONENTS = ["initializer", "adapter", "processor", "decoder"]
-Average_student = False
+Average_teacher = False
 class ServerFedHelper:
     def __init__(self):
         self._clean_previous_state()  # Add this line
@@ -88,7 +88,7 @@ class ServerFedHelper:
             client_weights = []
             for client in clients:
                 client_dir = os.path.join(SHARED_ROOT, client)
-                if Average_student:
+                if Average_teacher:
                     client_dir = os.path.join(SHARED_ROOT, client,"student")
 
                 try:
