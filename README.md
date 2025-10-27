@@ -9,5 +9,22 @@ _[NeurIPS'25](https://openreview.net/forum?id=WlVBCT5pbB) |
 [GitHub](https://github.com/PCASOlab/FORLA) |
 [arXiv](https://arxiv.org/abs/2506.02964) |
 [Project page](https://forla-research.github.io/)_
+ 
+<p align="center">
+  <img src="assets/method.gif" width="800" />
+</p>
 
-**FORLA framework**
+## Introduction
+
+This is the official PyTorch implementation for paper: [FORLA: Federated Object-centric Representation Learning with Slot Attention]().
+The code contains:
+
+-   Unsupervised object-centric Slot attention (SA) model training with adaptation of a stack of foundation models (DINO,SAM,MAE,CLIP) 
+-  The **FORLA** framework for Federated Object-centric learning
+-   7 Realworld datasets (3 Surgical|4 Natural), establishing a large scale FL SA benchmark 
+ 
+
+ 
+## Installation
+
+Please refer to [install.md](docs/install.md) for step-by-step guidance on how to install the packages.
