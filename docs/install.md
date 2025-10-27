@@ -31,7 +31,8 @@ Optional:
 We use visdom for visualization:
 pip install visdom
 
-## Possible Issues
+```
+Possible Issues
 
--   In case you encounter any environmental issues (e.g., package version compatibility), you can chech out to the env file exported from my server [requirements.txt](https://github.com/PCASOlab/FORLA/blob/main/docs/requirements.txt).
+-   In case you encounter any environmental issues (e.g., package version compatibility), you can check out the env file exported from our server [requirements.txt](https://github.com/PCASOlab/FORLA/blob/main/docs/requirements.txt).
     You can use this file to install specific version of a package.
