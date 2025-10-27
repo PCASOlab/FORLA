@@ -18,4 +18,4 @@ Please only take `images/`, `SegmentationClass/`, `SegmentationClassAug/`, `sets
 Finally, we also need the instance segmentation masks for evaluation.
 Please download this [file](http://host.robots.ox.ac.uk:8080/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar), unzip it, take the `VOCdevkit/VOC2012/SegmentationObject/` folder.
 
-The run the data precuration code [data_pascal.py](../data_pre_curation/data_pascal.py) to generated PKLS for train and test, and put them in [/data/PASCAL/VOCtrainval_11-May-2012/pkl/train](../data/PASCAL/VOCtrainval_11-May-2012/pkl/train) and [/data/PASCAL/VOCtrainval_11-May-2012/pkl/val](../data/PASCAL/VOCtrainval_11-May-2012/pkl/val) 
+The run the data precuration code [data_pascal.py](../data_pre_curation/data_pascal.py) to generated PKLS for train and test, and put them in [/data/PASCAL/VOCtrainval_11-May-2012/pkl/train](../data/PASCAL/VOCtrainval_11-May-2012/pkl/train/) and [/data/PASCAL/VOCtrainval_11-May-2012/pkl/val](../data/PASCAL/VOCtrainval_11-May-2012/pkl/val/) 
