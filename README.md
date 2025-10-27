@@ -40,7 +40,7 @@ Please refer to [data.md](docs/data.md) for dataset downloading and pre-processi
 ---
 Option 1
 
-using [FL_launcher.sh](./FL_launcher.sh) to run server and clients all in once.
+using [FL_launcher.sh](./FL_launcher.sh) ([FL_launcher_w_env.sh](./FL_launcher_w_env.sh) if you are using virtual environment) to run server and clients all in once.
 Config FL_launcher.sh to add more clients:
 ```
 #!/bin/bash
@@ -102,4 +102,11 @@ Aggregated new global model v4
 .
 .
 ```
+---
+
+---
+Option 2
+
+Start server & each clients within each python commander individually:
+
 ---
