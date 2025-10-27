@@ -28,3 +28,7 @@ The code contains:
 ## Installation
 
 Please refer to [install.md](docs/install.md) for step-by-step guidance on how to install the packages.
+
+### Dataset Preparation
+
+Please refer to [data.md](docs/data.md) for dataset downloading and pre-processing.
