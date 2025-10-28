@@ -36,15 +36,15 @@ The code contains:
 
 Please refer to [install.md](docs/install.md) for step-by-step guidance on how to install the packages.
 
-### Dataset Preparation
+
+## Dataset Preparation
 
 Please refer to [data.md](docs/data.md) for dataset downloading and pre-processing.
 
 
 
-### Training FL models
-
----
+## Training FL models
+ 
 Option 1
 
 1. use [FL_launcher.sh](./FL_launcher.sh) ([FL_launcher_w_env.sh](./FL_launcher_w_env.sh) if you are using virtual environment) to run server and clients all in once.
@@ -133,9 +133,8 @@ python -m main.FL.FL_c[client_index]
 
 ---
 
-### Evaluation FL models
-
----
+## Evaluation FL models
+ 
 1.  For each client code, for instace client1[main.FL.FL_c1](./main/FL/FL_c1.py),
 set the keyword to ultilize evaluation config of a specific data:
 ```
