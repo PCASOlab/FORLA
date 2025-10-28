@@ -16,7 +16,10 @@ _[NeurIPS'25](https://openreview.net/forum?id=WlVBCT5pbB) |
 
 
 **Federated unsupervised feature adaptation**
-<img src="./assets/feature.png"  width="70%">
+<p align="center">
+  <img src="./assets/feature.png" width="800" />
+</p>
+ 
 
 ## Introduction
 
