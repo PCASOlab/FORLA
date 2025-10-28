@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# tmux kill-server 2>/dev/null
 # Federated Learning Tmux Setup Script
 
 # Create server session

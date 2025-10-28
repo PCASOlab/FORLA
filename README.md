@@ -14,6 +14,10 @@ _[NeurIPS'25](https://openreview.net/forum?id=WlVBCT5pbB) |
   <img src="assets/method.gif" width="800" />
 </p>
 
+
+**Federated unsupervised feature adaptation**
+<img src="./assets/feature.png"  width="70%">
+
 ## Introduction
 
 This is the official PyTorch implementation for paper: [FORLA: Federated Object-centric Representation Learning with Slot Attention]().
@@ -40,7 +44,7 @@ Please refer to [data.md](docs/data.md) for dataset downloading and pre-processi
 ---
 Option 1
 
-using [FL_launcher.sh](./FL_launcher.sh) ([FL_launcher_w_env.sh](./FL_launcher_w_env.sh) if you are using virtual environment) to run server and clients all in once.
+1. use [FL_launcher.sh](./FL_launcher.sh) ([FL_launcher_w_env.sh](./FL_launcher_w_env.sh) if you are using virtual environment) to run server and clients all in once.
 Config FL_launcher.sh to add more clients:
 ```
 #!/bin/bash
@@ -67,12 +71,12 @@ tmux send-keys -t client4 "python -m main.FL.FL_c4" C-m
 # Optional: Attach to server session by default
 tmux attach-session -t server
 ```
-Change the parameter in [main.FL.FL_server](./main/FL/FL_server.py) for aggreggating corresponding number of client local model(e.g., 4):
+2. Change the parameter in [main.FL.FL_server](./main/FL/FL_server.py) for aggreggating corresponding number of client local model(e.g., 4):
 ```
 FED_MIN_CLIENTS = 4
 ```
-For each client code, for instace client1[main.FL.FL_c1](./main/FL/FL_c1.py),
-set the data target trained on:
+3. For each client code, for instace client1[main.FL.FL_c1](./main/FL/FL_c1.py),
+set the keyword to ultilize training config of a specific data:
 ```
 import os
  
@@ -86,7 +90,7 @@ os.environ['WORKING_DIR_IMPORT_MODE'] = 'train_pascal'  # Change this to your ta
 
 
 ```
-sh FL_launcher.sh
+4. sh FL_launcher.sh
 ```
 See output like:
 ```
@@ -102,11 +106,57 @@ Aggregated new global model v4
 .
 .
 ```
----
+
 
 ---
 Option 2
 
 Start server & each clients within each python commander individually:
 
+1. Follow option 1 to setup key parameters for server and clients.
+
+2. Decompose FL_launcher.sh mannually to different command window:
+Use one window for server:
+```
+conda activate forla # optional if you use conda env
+python -m main.FL.FL_server
+```
+Then use other multiple windows for clients:
+```
+conda activate forla # optional if you use conda env
+python -m main.FL.FL_c[client_index]
+```
+
+
 ---
+
+### Evaluation FL models
+
+---
+1.  For each client code, for instace client1[main.FL.FL_c1](./main/FL/FL_c1.py),
+set the keyword to ultilize evaluation config of a specific data:
+```
+import os
+ 
+# os.environ['WORKING_DIR_IMPORT_MODE'] = 'train_miccai'  # Change this to your target mode
+# os.environ['WORKING_DIR_IMPORT_MODE'] = 'eval_miccai'  # Change this to your target mode
+ 
+os.environ['WORKING_DIR_IMPORT_MODE'] = 'eval_pascal'  # Change this to your target mode
+# os.environ['WORKING_DIR_IMPORT_MODE'] = 'train_pascal'  # Change this to your target mode
+
+```
+2 run [FL_launcher_eval.sh](./FL_launcher_eval.sh) 
+```
+tmux kill-server # if had other sessions running 
+sh FL_launcher_eval.sh
+```
+
+---
+ 
+## License
+
+FORLA is released under the MIT License. See the LICENSE file for more details.
+
+## Contact
+
+If you have any questions about the code, please contact Guiqiu Liao liaoguiqiu@outlook.com
