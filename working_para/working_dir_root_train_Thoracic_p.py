@@ -49,7 +49,7 @@ if Evaluation == True:
 
 # 1.0, 0.9, 0.5, 0.3, 0.1 , 0.05, 0.01
 #2.0 for fine tune
-Data_percentage = 0.10
+Data_percentage = 1.0
  
 Display_flag = True
 Display_down_sample = 10000
@@ -65,7 +65,7 @@ loadmodel_index = '1.pth'
 Random_mask_temporal_feature = False
 Random_mask_patch_feature = False
 
-Batch_size =16
+Batch_size =1
 Video_len = 1
 Video_down_sample_f = 1
 Data_aug = False

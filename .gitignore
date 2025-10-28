@@ -1,0 +1,3 @@
+# Ignore all files in any subfolder of model_checkpoint
+data/output/
+data/SAM/

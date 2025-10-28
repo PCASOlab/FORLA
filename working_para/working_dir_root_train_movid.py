@@ -69,7 +69,7 @@ loadmodel_index = '1.pth'
 Random_mask_temporal_feature = False
 Random_mask_patch_feature = False
 
-Batch_size =8
+Batch_size =1
 Video_len = 24
 Video_down_sample_f = 1
 Data_aug = False

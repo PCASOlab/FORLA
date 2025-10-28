@@ -5,19 +5,19 @@ import os
 # Define base paths for each machine
 MACHINE_PATHS = {
     1: {
-        "base": "/media/guiqiu/Weakly_supervised_data/",
+        "base": "/media/guiqiu/data/",
         # Add other machine 1 paths here
     },
     2: {
-        "base": "/data/",
+        "base": "./data/",
         # Add other machine 1 paths here
     },
     3: {
-        "base": "/data/",
+        "base": "./data/",
         # Add other machine 3 paths here
     },
     4: {
-        "base": "/media/data/",
+        "base": "./data/",
         # Add other machine 3 paths here
     }
 }

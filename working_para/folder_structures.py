@@ -41,7 +41,7 @@ if Linux_computer == True:
 Dataset_label_root =  working_root + "training_data/"
 config_root =   working_root + "config/"
 Output_root =   working_pcaso_raid+"output/"
-SAM_pretrain_root = working_pcaso_raid+"output/SAM/"
+SAM_pretrain_root = working_pcaso_raid+"SAM/"
 DINO_pretrain_root = working_root + "output_vdst/DINO/"
 
 output_folder_sam_feature = working_root+ "cholec80/output_sam_features/"
