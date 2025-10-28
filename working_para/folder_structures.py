@@ -96,7 +96,7 @@ if Linux_computer == True:
     Dataset_video_pkl_MOVIE = working_pcaso_raid + "MOVi/MOVi-E/pkl/train/"
     Dataset_video_pkl_MOVID = working_pcaso_raid + "MOVi/MOVi-D/pkl/train/"
 
-    Dataset_video_pkl_YTOBJ = working_pcaso_raid + "YTOBJ/pkl6/"
+    Dataset_video_pkl_YTOBJ = working_pcaso_raid + "YTOBJ/pkl/"
 
 
     Slots_prototype_pkl  =  working_pcaso_raid +  "out/pkl/"

@@ -12,7 +12,7 @@ import json
 import os
 
 from working_para.folder_structures import *
-
+Dataset_video_pkl_YTVOS = working_pcaso_raid + "YTVOS/pkl_test/"
 
 data_flag_list = ["Cholec", "Thoracic", "MICCAI", "MICCAI_merge", "MICCAIv2",
                   "Endovis", "DAVIS", "YTVOS", "YTOBJ","PASCAL","COCO"]
