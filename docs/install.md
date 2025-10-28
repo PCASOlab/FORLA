@@ -24,14 +24,21 @@ pip install pycocotools scikit-image lpips chardet omegaconf
 pip install pytorch-fid einops transformers
 ```
   
-
-```
 Optional:
 
 We use visdom for visualization:
+```
+
 pip install visdom
 
 ```
+
+We for foundation model including DINO, CLIP, MAE the code will handle the download of the models, as for segment-anything model (SAM), you will need to download it mannually from [SAM offical repo](https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth).
+
+Place it under [./data/SAM/](./data/SAM/), or you can change the dir defination in the code.
+
+
+
 Possible Issues
 
 -   In case you encounter any environmental issues (e.g., package version compatibility), you can check out the env file exported from our server [requirements.txt](https://github.com/PCASOlab/FORLA/blob/main/docs/requirements.txt).

@@ -2,7 +2,7 @@
 
 We curated train/test data seperated for each dataset seperately, and stored them as pkl files to load for training.
 
-in [data](../data/) folder we sampled a small number of data points to demonstrate the curated data structure, and the usage of training code. 
+in [data](../data/) folder we sampled a small number of data points to demonstrate the curated data structure, and the usage of training code. For demo on training using sampled small size data, the batch size is set to 1 in the training config of each specific dataset, for instance in  [./working_para/working_dir_root_train_pascal_p.py](./working_para/working_dir_root_train_pascal_p.py), please change the batch size for actual experiment.
 
 The steps on preparing full large scale data for each dataset is listed below.
 
