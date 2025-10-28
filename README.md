@@ -48,7 +48,7 @@ Please refer to [data.md](docs/data.md) for dataset downloading and pre-processi
 Option 1
 
 1. use [FL_launcher.sh](./FL_launcher.sh) ([FL_launcher_w_env.sh](./FL_launcher_w_env.sh) if you are using virtual environment) to run server and clients all in once.
-Config FL_launcher.sh to add more clients:
+Config FL_launcher.sh to add more clients (here is a example with 4 clients):
 ```
 #!/bin/bash
 
@@ -74,12 +74,12 @@ tmux send-keys -t client4 "python -m main.FL.FL_c4" C-m
 # Optional: Attach to server session by default
 tmux attach-session -t server
 ```
-2. Change the parameter in [main.FL.FL_server](./main/FL/FL_server.py) for aggreggating corresponding number of client local model(e.g., 4):
+2. Change this parameter in [main.FL.FL_server](./main/FL/FL_server.py) for aggreggating a specific number of local models (e.g., 4):
 ```
 FED_MIN_CLIENTS = 4
 ```
 3. For each client code, for instace client1[main.FL.FL_c1](./main/FL/FL_c1.py),
-set the keyword to ultilize training config of a specific data:
+set the data keyword to ultilize training config of a given data:
 ```
 import os
  
@@ -99,9 +99,9 @@ See output like:
 ```
 Not enough clients (0) for aggregation
 Not enough clients (0) for aggregation
-Not enough clients (0) for aggregation
-Not enough clients (1) for aggregation
-Not enough clients (3) for aggregation
+Not enough clients (0) for aggregation # no client is ready
+Not enough clients (1) for aggregation # 1 clent is ready
+Not enough clients (3) for aggregation # 3 clents are ready
 Aggregated new global model v1
 Aggregated new global model v2
 Aggregated new global model v3
