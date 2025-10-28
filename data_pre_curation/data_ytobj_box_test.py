@@ -12,7 +12,8 @@ from working_dir_root import root_YTOBJ
 import mat73
 # from working_dir_root import root_YTOBJ
 # root_YTOBJ = "C:/2data/TCAMdata/youtube video/download2/"
-
+from dataset import io
+import re
 # from working_dir_root import SAM_pretrain_root,sam_feature_OLG_dir3
 import torch
 import torch.nn as nn
@@ -46,7 +47,7 @@ from scipy.io import loadmat
 
 Update_PKL = True
 Create_sam_feature = False
-img_size =(256,256)
+img_size =(512,512)
 video_len=29
 def apply_mask(resized_image, scaled_bbox):
   """
@@ -128,7 +129,7 @@ def decode_bbx(target_string,GT):
     else:
         # print(f"String '{target_string}' not found in the data")
         return None
-def load_image_sequence(folder_path, start_num, end_num, flows,GT,ctg,downsample_factor=1):
+def load_image_sequence(folder_path,GT,ctg,downsample_factor=1):
   """
   Loads an image sequence with a downsample factor.
 
@@ -143,7 +144,7 @@ def load_image_sequence(folder_path, start_num, end_num, flows,GT,ctg,downsample
           - images (list): A list of loaded images.
           - image_names (list): A list of corresponding image names (without extension).
   """
-
+  category = os.path.basename(folder_path.rstrip('/'))
   # List all files in the directory
   all_files = os.listdir(folder_path)
   
@@ -159,19 +160,29 @@ def load_image_sequence(folder_path, start_num, end_num, flows,GT,ctg,downsample
   flow_masks = []
   masks = []
   boxs =[]
-  for i, image_file in enumerate(image_files):
-    if (start_num <= int(image_file[:-4]) < end_num) and (i % downsample_factor == 0):
-        image_path = os.path.join(folder_path, image_file)
-        image_OG = cv2.imread(image_path)
+
+  for item in GT:
+      this_file_name = item[0][0]
+      digits = re.findall(r'\d+', this_file_name)
+      image_path = os.path.join(folder_path, digits[0] + ".jpg")
+      image_OG = cv2.imread(image_path)
+      if image_OG is not None:
         image = cv2.resize(image_OG, img_size)
-        if image is not None:
-                target_box_name = ctg+image_file[:-4]
-                bbx = decode_bbx(target_box_name,GT)
-                mask=None
-                if bbx is not None:
-                    bbx =scale_bounding_box(bbx, image_OG, image)
-                    masked_image,mask = apply_mask(image,bbx)
-                    cv2.imwrite(root_YTOBJ + "maskedimages/"+image_file+".jpg", masked_image)
+        io.save_img_to_folder(root_YTOBJ + "images/test/"+category+'/', this_file_name, image)
+#   for i, image_file in enumerate(image_files):
+#     if (start_num <= int(image_file[:-4]) < end_num) and (i % downsample_factor == 0):
+#         image_path = os.path.join(folder_path, image_file)
+#         image_OG = cv2.imread(image_path)
+#         image = cv2.resize(image_OG, img_size)
+#         if image is not None:
+#                 target_box_name = ctg+image_file[:-4]
+#                 bbx = decode_bbx(target_box_name,GT)
+#                 mask=None
+#                 if bbx is not None:
+#                     bbx =scale_bounding_box(bbx, image_OG, image)
+#                     masked_image,mask = apply_mask(image,bbx)
+#                     io.save_img_to_folder(root_YTOBJ + "images/train/"+category+'/', image_file, image)
+                    # cv2.imwrite(root_YTOBJ + "images/train/"+category+'/'+image_file+".jpg", masked_image)
                 # flow_id = int(image_file[:-4])-start_num
                 # flow_id =np.clip(flow_id,0, len(flows)-1)
                 # this_flow = flows[int(flow_id)]
@@ -186,10 +197,10 @@ def load_image_sequence(folder_path, start_num, end_num, flows,GT,ctg,downsample
                 # magnitude = cv2.resize(magnitude, dsize=img_size, interpolation=cv2.INTER_AREA)
                 # magnitude = magnitude>3
                 
-                images.append(image)
-                image_names.append(image_file[:-4])
-                masks.append(mask)
-                boxs.append(bbx)
+                # images.append(image)
+                # image_names.append(image_file[:-4])
+                # masks.append(mask)
+                # boxs.append(bbx)
                 # mask = magnitude[..., np.newaxis] * np.ones_like(image[..., :1])
                 # masked_image = image * mask
                 # masked_images.append(masked_image)
@@ -287,7 +298,7 @@ color_list = [[236, 95, 103],[249, 145, 87]]
 if __name__ == '__main__':
     from matplotlib import pyplot as plt
     
-    output_folder_pkl = root_YTOBJ + "pkl8/"
+    output_folder_pkl = root_YTOBJ + "pkl10/"
     subsets = ['train', 'val']
     subsets = ['train']
     all_categories = sorted(os.listdir(root_YTOBJ+ "GroundTruth/"))
@@ -329,58 +340,10 @@ if __name__ == '__main__':
         # data_GT = mat_contents_bbx['bb_gtTraining']
         flow_mat_list = (os.listdir(root_YTOBJ+ "OpticalFlow/"+category +"_flow/" + category +"/" +"broxPAMI2011/"))
         # convert one folder by one folder:
-        for index, this_range in enumerate(data_range.T):
-            this_video_dir = root_YTOBJ + 'videos/'+category + "/"
- 
-            flows = mat73.loadmat(root_YTOBJ+ "OpticalFlow/"+category +"_flow/" + category +"/" +"broxPAMI2011/flowShot"+str(index+1)+'.mat')
-            images, image_names, masks, boxs= load_image_sequence(this_video_dir,this_range[0],this_range[1],flows['flow'],GT,category)
+        this_video_dir = root_YTOBJ + 'videos/'+category + "/"
 
-            # video_unique_color =get_unique_colors(np.array(masks)) 
-            all_data =[]
-            if any(boxs):
-                for img, name ,mask, box in zip(images, image_names, masks, boxs):
-                    # Organize as a dictionary or structure
-                    
-                    data_pair = {'frame': img, 'label': one_hot_vectors,'mask':mask,'box':box,'image_names': name}
-                    all_data.append(data_pair)
-                    # cv2.imwrite(root_YTOBJ + "maskedimages/"+name+".jpg", masked_image)
-                    # Check if buffer is not empty and has reached the desired length
-                    if len(all_data) > 0 and len(all_data) == video_len:
-                        # Convert list of dictionaries to a dictionary of arrays
-                        data_dict = {'frames': np.array([pair['frame'] for pair in all_data]),
-                                        'labels': np.array([pair['label'] for pair in all_data]),
-                                        'boxs': np.array([pair['box'] for pair in all_data]),
-                                        'masks': np.array([pair['mask'] for pair in all_data]),
-                                        'image_names': np.array([pair['image_names'] for pair in all_data]) ,
-                                        }
-                        # if any(data_dict['boxs']):
-                        # Perform "or" operation to merge labels
-                        # merged_labels = merge_labels(data_dict['labels'])
-
-                        # Reshape arrays
-                        data_dict['frames'] = np.transpose(data_dict['frames'], (3, 0, 1, 2))  # Reshape to (3, 29, 256, 256)
-                        # data_dict['masks'] = np.transpose(data_dict['masks'], (3, 0, 1, 2))  # Reshape to (3, 29, 256, 256)
-                        # data_dict['masked_frames'] = np.transpose(data_dict['masked_frames'], (3, 0, 1, 2))  # Reshape to (3, 29, 256, 256)
-
-                        # data_dict['labels'] = np.transpose(data_dict['labels'], (1, 0, 2, 3))  # Reshape to (10 29, 256, 256)
-                    
-                        pkl_file_name = f"clip_{file_counter:06d}.pkl"
-                        pkl_file_path = os.path.join(output_folder_pkl, pkl_file_name)
-                        if Update_PKL:
-                            all_count_vector += one_hot_vectors
-
-                            with open(pkl_file_path, 'wb') as file:
-                                pickle.dump(data_dict, file)
-                                print("Pkl file created:" +pkl_file_name)
-                                print(all_count_vector)
-                        
-                            
-                        file_counter += 1
-
-                            # Clear data for the next batch
-                        all_data = []
-                else:
-                    print("nobox" +category + str(this_range[0])+"-"+str(this_range[1]) )
+        images, image_names, masks, boxs= load_image_sequence(this_video_dir ,GT,category)
+         
  
     print("Total files created:", file_counter)
 

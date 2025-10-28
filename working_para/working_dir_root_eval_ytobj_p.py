@@ -13,7 +13,7 @@ import os
 # Remote
 
 from working_para.folder_structures import *
-Dataset_video_pkl_YTOBJ = working_pcaso_raid + "YTOBJ/pkl6/"
+Dataset_video_pkl_YTOBJ = working_pcaso_raid + "YTOBJ/pkl_test/"
 
 
 data_flag_list = ["Cholec", "Thoracic", "MICCAI", "MICCAI_merge", "MICCAIv2",

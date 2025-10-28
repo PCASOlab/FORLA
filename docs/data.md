@@ -33,7 +33,7 @@ Please only take `images/`, `SegmentationClass/`, `SegmentationClassAug/`, `sets
 Finally, we also need the instance segmentation masks for evaluation.
 Please download this [file](http://host.robots.ox.ac.uk:8080/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar), unzip it, take the `VOCdevkit/VOC2012/SegmentationObject/` folder.
 
-The run the data precuration code [data_pascal.py](../data_pre_curation/data_pascal.py) to generate PKLS for train and test, and put them in [/data/PASCAL/VOCtrainval_11-May-2012/pkl/train](../data/PASCAL/VOCtrainval_11-May-2012/pkl/train/) and [/data/PASCAL/VOCtrainval_11-May-2012/pkl/val](../data/PASCAL/VOCtrainval_11-May-2012/pkl/val/) 
+Then run the data precuration code [data_pascal.py](../data_pre_curation/data_pascal.py) to generate PKLS for train and test, and put them in [/data/PASCAL/VOCtrainval_11-May-2012/pkl/train](../data/PASCAL/VOCtrainval_11-May-2012/pkl/train/) and [/data/PASCAL/VOCtrainval_11-May-2012/pkl/val](../data/PASCAL/VOCtrainval_11-May-2012/pkl/val/) 
 
 
 ## MS COCO 2017
@@ -44,4 +44,16 @@ Specifically, we need `2017 Train images [118K/18GB]`, `2017 Val images [5K/1GB]
 Unzip them and you will get 2 images folders `train2017/` and `val2017/`, and 2 annotation files `instances_train2017.json` and `instances_val2017.json`.
 Please put the image folders under `./data/COCO/images/`, and the annotations json files under `./data/COCO/annotations/`.
 
-The run the data precuration code [data_coco.py](../data_pre_curation/data_coco.py) to generate PKLS for train and test, and put them in [/data/COCO/pkl/train](../data/COCO/pkl/train/) and [/data/COCO/pkl/val](../data/COCO/pkl/val/) 
+Then run the data precuration code [data_coco.py](../data_pre_curation/data_coco.py) to generate PKLS for train and test, and put them in [/data/COCO/pkl/train](../data/COCO/pkl/train/) and [/data/COCO/pkl/val](../data/COCO/pkl/val/) 
+
+## YTVIS data
+
+Download the instance segmentation (2019) version from Youtube object segmentation chanllenge official website [Download](https://youtube-vos.org/dataset/).
+
+Then run the data precuration code [data_ytvis.py](../data_pre_curation/data_ytvis.py) and [data_ytvis_test.py](../data_pre_curation/data_ytvis.py) seperately to generate PKLS for train and test, and put them in [/data/YTVOS/pkl/](../data/YTVOS/pkl/) and [/data/YTVOS/pkl_test/](../data/YTVOS/pkl_test/) 
+
+## YTOBJ data
+
+Please download YTOBJ data from the official which contains videos for 10 objects and annotation with .mat format (https://calvin-vision.net/datasets/youtube-objects-dataset/). 
+
+Unzip the files and use [data_ytobj.py](../data_pre_curation/data_ytobj.py) and [data_ytobj_box_test.py](../data_pre_curation/data_ytobj_box_test.py) seperately to generate PKLS for train and test, and put them in [/data/YTOBJ/pkl/](../data/YTOBJ/pkl/) and [/data/YTOBJ/pkl_test/](../data/YTOBJ/pkl_test/) 

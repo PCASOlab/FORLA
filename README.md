@@ -1,4 +1,4 @@
-# FORLA
+# [FORLA](https://forla-research.github.io/)
 
 [**FORLA: Federated Object-centric Representation Learning with Slot Attention**](https://forla-research.github.io/)<br/>
 [Guiqiu Liao](https://liaoguiqiu.github.io//),
