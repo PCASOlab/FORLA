@@ -155,10 +155,20 @@ sh FL_launcher_eval.sh
 ```
 
 ---
- 
+## Cite
+
+```
+@inproceedings{liao2025forla,
+  title={FORLA: Federated Object-centric Representation Learning with Slot Attention},
+       author={Liao, Guiqiu and Jogan, Matjaz and Eaton, Eric and Hashimoto, Daniel A},
+    title = {{Conditional Object-Centric Learning from Video}},
+    booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+    year  = {2025}
+}
+```
 ## License
 
-FORLA is released under the MIT License. See the LICENSE file for more details.
+FORLA is released under the Apache-2.0 License. See the LICENSE file for more details.
 
 ## Contact
 
