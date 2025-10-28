@@ -154,7 +154,7 @@ sh FL_launcher_eval.sh
 ```
 
 ---
-## FL models 
+## FL pretrained models 
 
 If you want to direct use pretrained models, they can be downloaded here:
 [7-domain FL model](https://upenn.box.com/s/lpts8x6e66fga5litsvgxznj1y2ym30x)
