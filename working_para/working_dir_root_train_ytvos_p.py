@@ -21,7 +21,7 @@ selected_data= ["YTVOS"]
 Cathe_feature_dir =  root_YTVOS + "feature_cache/"
 
 Catche_epoch=10
-Cathe_feature = 'disk' # "disk"
+Cathe_feature = 'no' # "disk"
 if selected_data == "YTVOS":
     sam_feature_OLG_dir = os.path.join(root_YTVOS, "feature_OLG/")
 

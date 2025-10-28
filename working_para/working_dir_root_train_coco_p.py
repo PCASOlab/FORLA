@@ -117,7 +117,7 @@ data_flag_list = ["Cholec", "Thoracic", "MICCAI", "MICCAI_merge", "MICCAIv2",
 selected_data= ["COCO"]
 Cathe_feature_dir =  working_pcaso_raid + "All_feature_cache/"
 Catche_epoch=1
-Cathe_feature = 'disk' # "disk"
+Cathe_feature = 'no' # "disk"
 if selected_data == "YTVOS":
     sam_feature_OLG_dir = os.path.join(root_YTVOS, "feature_OLG/")
 
