@@ -1,5 +1,14 @@
 # Install
 
+
+## Foundation models
+
+For foundation model including DINO, CLIP, MAE the code will handle the download of the models, as for segment-anything model (SAM), you will need to download it mannually from [SAM offical repo](https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth).
+
+Place it under [./data/SAM/](./data/SAM/), or you can change the dir defination in the code.
+
+## Python environment
+
 We recommend using [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) for environment setup:
 
 ```
@@ -30,10 +39,6 @@ We use visdom for visualization:
 ```
 pip install visdom
 ```
-
-We for foundation model including DINO, CLIP, MAE the code will handle the download of the models, as for segment-anything model (SAM), you will need to download it mannually from [SAM offical repo](https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth).
-
-Place it under [./data/SAM/](./data/SAM/), or you can change the dir defination in the code.
 
 
 
