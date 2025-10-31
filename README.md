@@ -163,12 +163,11 @@ If you want to directly use pretrained models, they can be downloaded here:
 ## Cite
 
 ```
-@inproceedings{liao2025forla,
-  title={FORLA: Federated Object-centric Representation Learning with Slot Attention},
-       author={Liao, Guiqiu and Jogan, Matjaz and Eaton, Eric and Hashimoto, Daniel A},
-    title = {{Conditional Object-Centric Learning from Video}},
-    booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
-    year  = {2025}
+@article{liao2025forla,
+  title   = {FORLA: Federated Object-centric Representation Learning with Slot Attention},
+  author  = {Liao, Guiqiu and Jogan, Matja&#382; and Eaton, Eric and Hashimoto, Daniel A.},
+  journal = {arXiv preprint arXiv:2506.02964},
+  year    = {2025}
 }
 ```
 ## License
