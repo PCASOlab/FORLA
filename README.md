@@ -36,6 +36,11 @@ The code contains:
 
 Please refer to [install.md](docs/install.md) for step-by-step guidance on how to install the packages.
 
+Clone the repo
+```
+git clone https://github.com/PCASOlab/FORLA.git
+cd FORLA
+```
 
 ## Dataset Preparation
 
