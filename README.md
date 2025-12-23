@@ -177,7 +177,7 @@ If you want to directly use pretrained models, they can be downloaded here:
 ```
 ## License
 
-FORLA is released under the Apache-2.0 License. See the LICENSE file for more details.
+FORLA is released under the PENN ACADEMIC SOFTWARE LICENSE. See the LICENSE file for more details.
 
 ## Contact
 
